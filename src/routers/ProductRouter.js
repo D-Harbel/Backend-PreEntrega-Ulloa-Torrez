@@ -64,7 +64,7 @@ router.get('/:pid', async (req, res) => {
     pid = parseInt(pid);
 
     if(isNaN(pid)){
-        return res.send('<h1 style="color:red">Error, ingrese un id de valor numérico</h1>');
+        return res.status(400).send('<h1 style="color:red">Error, ingrese un id de valor numerico</h1>');
     }
 
     let product = await pm.getProductById(pid);
