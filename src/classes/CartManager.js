@@ -31,8 +31,16 @@ class CartManager {
 
     addProductCart(cartId, productId, quantity) {
         let carts = this.getCarts();
+        let products = this.pm.getProducts()
 
-        let index = carts.findIndex(cart => cart.id === cartId.toString());
+        let productExists = products.some(product => product.id === productId);
+
+        if (!productExists) {
+            console.log(`No se encontró el producto con el ID ${productId}`);
+            return;
+        }
+
+        let index = carts.findIndex(cart => cart.id === cartId.toString())
 
         if (index === -1) {
             console.log(`No se ha encontrado ${cartId}`);

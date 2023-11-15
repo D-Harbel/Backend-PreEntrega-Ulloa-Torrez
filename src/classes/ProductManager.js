@@ -51,6 +51,13 @@ class ProductManager {
             return;
         }
 
+        const isCodeTaken = products.some(p => p.code === updatedProduct.code && p.id !== id);
+
+        if (isCodeTaken) {
+            console.log(`Ya existe un producto con el código ${updatedProduct.code}`);
+            return;
+        }
+
         const checkObject = (check) => {
             return check === Object(check)
         }
